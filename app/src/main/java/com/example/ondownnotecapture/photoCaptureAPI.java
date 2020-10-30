@@ -51,14 +51,15 @@ public class photoCaptureAPI extends AppCompatActivity implements SurfaceHolder.
         setContentView(R.layout.activity_photo_capture_a_p_i);
 
         surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
-        surfaceHolder = surfaceView.getHolder();
+        surfaceHolder = surfaceView.getHolder();// truy xuất bằng cách gọigetholder
 
         // Install a SurfaceHolder.Callback so we get notified when the
         // underlying surface is created and destroyed.
         surfaceHolder.addCallback(this);
 
         // deprecated setting, but required on Android versions prior to 3.0
-        surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);//Trả lại SurfaceHolder cung cấp quyền truy cập và kiểm soát bề mặt bên dưới của SurfaceView này.
+
 
         jpegCallback = new Camera.PictureCallback() {
             public void onPictureTaken(byte[] data, Camera camera) {
@@ -69,7 +70,7 @@ public class photoCaptureAPI extends AppCompatActivity implements SurfaceHolder.
                     outStream.close();
                     Log.d("Log", "onPictureTaken - wrote bytes: " + data.length);
                 } catch (FileNotFoundException e) {
-                    e.printStackTrace();
+                    e.printStackTrace();// theo dõi ngoại lệ,xác định phương thức gây lỗi ..... ngăn xếp
                 } catch (IOException e) {
                     e.printStackTrace();
                 } finally {
@@ -92,6 +93,7 @@ public class photoCaptureAPI extends AppCompatActivity implements SurfaceHolder.
     public void captureImage(View v) throws IOException {
         //take the picture
         camera.takePicture(null, null, jpegCallback);
+
         // getLocation
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
@@ -103,7 +105,6 @@ public class photoCaptureAPI extends AppCompatActivity implements SurfaceHolder.
             longitude.setText("Longitude: " + String.valueOf(location.getLongitude()));
             latitude.setText("Latitude: " + String.valueOf(location.getLatitude()));
         }
-
     }
 
 /*
@@ -203,6 +204,7 @@ public class photoCaptureAPI extends AppCompatActivity implements SurfaceHolder.
         }
     }
 
+//Location
     void requestLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling

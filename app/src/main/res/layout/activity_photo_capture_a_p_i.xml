@@ -18,24 +18,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Longitude: "
-        android:textSize="20sp"/>
+        android:textSize="16sp"/>
     <TextView
         android:id="@+id/latitude"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Latitude: "
-        android:textSize="20sp"/>
+        android:textSize="16sp"/>
 
 
     <Button
            android:id="@+id/btnCapture"
            android:layout_gravity="center"
            android:onClick="captureImage"
-           android:background="@color/green"
+           android:background="@drawable/capture"
            android:layout_width="wrap_content"
+
+
            android:layout_height="wrap_content"
-           android:text="Camera" />
+           android:text="Capture" />
 
 
 </LinearLayout>
